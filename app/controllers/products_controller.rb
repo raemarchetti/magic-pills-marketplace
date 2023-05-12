@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    @products = Product.all
     @products = Product.paginate(page: params[:page], per_page: 10)
   end
 
@@ -15,7 +16,17 @@ class ProductsController < ApplicationController
           "%#{params[:search]}%"
             "%#{params[:search]}%"`
                 else
-                  []
+                  Product.all
+                end
+
+                if params[:category].present?
+                  @products = @products.where(category: params[:category])
+                end
+
+                if params[:sort] == 'asc'
+                  @products = @products.order(price: :asc)
+                elsif params[:sort] == 'desc'
+                  @products = @products.order(price: :desc)
                 end
   end
 end

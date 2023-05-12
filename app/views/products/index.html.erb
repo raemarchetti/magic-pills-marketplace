@@ -2,6 +2,22 @@
 <%= form_tag search_products_path, method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: 'Search pills...' %>
   <%= submit_tag 'Search' %>
+
+<br>
+<!-- Add the category select dropdown -->
+<label for="category">Category:</label>
+<%= select_tag :category, options_for_select(Product.pluck(:category).uniq), include_blank: true %>
+<br>
+<!-- Add the sorting radio buttons -->
+<label>
+  <%= radio_button_tag :sort, 'asc' %>
+  Ascending Price
+</label>
+<label>
+  <%= radio_button_tag :sort, 'desc' %>
+  Descending Price
+</label>
+<br>
 <% end %>
 
 <div class="apple_pagination">
