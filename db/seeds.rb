@@ -14,3 +14,5 @@ pills.each do |pill|
   puts "Created #{pill.name}"
 end
 puts 'Seeds: Ended!'
+
+# comment
