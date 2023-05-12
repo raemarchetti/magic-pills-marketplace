@@ -6,4 +6,16 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def search
+    @products = if params[:search].present?
+      Product.where
+      `'name LIKE ? OR effect LIKE ? OR side_effects LIKE ?'
+        "%#{params[:search]}%"
+          "%#{params[:search]}%"
+            "%#{params[:search]}%"`
+                else
+                  []
+                end
+  end
 end

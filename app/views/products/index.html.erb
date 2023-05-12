@@ -1,12 +1,7 @@
 <h1>Products</h1>
-<% @products.each do |product| %>
-  <div>
-    <h3> <%= product.name %></h3>
-    <p> <%= product.effect %></p>
-    <p><strong><%= product.side_effects %></strong></p>
-    <p><strong>Lifespan Days:</strong> <%= product.lifespan_days %></p>
-    <p><strong>Price:</strong> <%= product.price %></p>
-  </div>
+<%= form_tag search_products_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Search pills...' %>
+  <%= submit_tag 'Search' %>
 <% end %>
 
 <div class="apple_pagination">
@@ -15,4 +10,3 @@
   </div>
   <%= will_paginate @products, :container => false %>
 </div>
-
