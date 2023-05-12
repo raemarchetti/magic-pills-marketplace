@@ -1,0 +1,17 @@
+<h1>Search Results</h1>
+
+<% if @products.present? %>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <h2><%= product.name %></h2>
+        <p><strong>Effects:</strong> <%= product.effect %></p>
+        <p><strong>Side Effects:</strong> <%= product.side_effects %></p>
+        <p><strong>Lifespan (in days):</strong> <%= product.lifespan_days %></p>
+        <p><strong>Price:</strong> <%= product.price %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>
