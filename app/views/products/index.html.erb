@@ -1,0 +1,18 @@
+<h1>Products</h1>
+<% @products.each do |product| %>
+  <div>
+    <h3> <%= product.name %></h3>
+    <p> <%= product.effect %></p>
+    <p><strong><%= product.side_effects %></strong></p>
+    <p><strong>Lifespan Days:</strong> <%= product.lifespan_days %></p>
+    <p><strong>Price:</strong> <%= product.price %></p>
+  </div>
+<% end %>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @products %>
+  </div>
+  <%= will_paginate @products, :container => false %>
+</div>
+
