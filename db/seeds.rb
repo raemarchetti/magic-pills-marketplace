@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# Create Pills
+puts 'Seeds: Started!'
+
+pills = [
+  { name: 'Pill A', effect: 'Effect A', side_effects: 'Side Effect A', lifespan_days: 30, price: 9.99 },
+  { name: 'Pill B', effect: 'Effect B', side_effects: 'Side Effect B', lifespan_days: 60, price: 19.99 },
+  { name: 'Pill C', effect: 'Effect C', side_effects: 'Side Effect C', lifespan_days: 90, price: 29.99 },
+  # Add more pills as needed
+]
+
+# Loop through the pills array and create Pill records
+pills.each do |pill|
+  Product.create!(pill)
+  puts "Created #{pill.name}"
+end
+puts 'Seeds: Ended!'
