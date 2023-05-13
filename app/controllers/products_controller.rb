@@ -21,14 +21,14 @@ class ProductsController < ApplicationController
                   Product.all
                 end
 
-                if params[:category].present?
-                  @products = @products.where(category: params[:category])
-                end
+    if params[:category].present?
+      @products = @products.where(category: params[:category])
+    end
 
-                if params[:sort] == 'asc'
-                  @products = @products.order(price: :asc)
-                elsif params[:sort] == 'desc'
-                  @products = @products.order(price: :desc)
-                end
+    if params[:sort] == 'asc'
+      @products = @products.order(price: :asc)
+    elsif params[:sort] == 'desc'
+      @products = @products.order(price: :desc)
+    end
   end
 end
