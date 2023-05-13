@@ -27,24 +27,23 @@
 <% end %>
 
 <h1>Available Magic Pills</h1>
-<% @products.each do |product| %>
-  <div class="card-trip">
-  <img src="https://cdn.pixabay.com/photo/2016/03/14/01/30/pill-1254786_1280.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= product.name %></h2>
-      <p><%= product.effect %></p>
-      <p><%= link_to "View Details", product_path(product) %></p>
-    </div>
-    <h2 class="card-trip-pricing">$<%= product.price %></h2>
+<div class="cards">
+  <% @products.each do |product| %>
+    <div class="card-trip">
+    <img src="https://images.unsplash.com/photo-1517157837591-17b69085bfdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= product.name %></h2>
+        <p><%= product.effect %></p>
+        <p><%= link_to "View Details", product_path(product) %></p>
+      </div>
+      <h2 class="card-trip-pricing">$<%= product.price %></h2>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" class="card-trip-user avatar-bordered" />
+      <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" class="card-trip-user avatar-bordered" />
+      </div>
     </div>
-  </div>
-
+  <% end %>
 </div>
-
-<% end %>
 
 
 
