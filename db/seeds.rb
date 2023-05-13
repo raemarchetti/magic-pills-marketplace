@@ -17,8 +17,7 @@ categories.each do |category|
       side_effects: Faker::Lorem.sentence,
       lifespan_days: Faker::Number.between(from: 30, to: 365),
       price: Faker::Number.decimal(l_digits: 2),
-      category: category,
-      user_id: user.id
+      category: category
     )
     product.user = user
     product.save!
