@@ -11,15 +11,18 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = if params[:search].present?
-      Product.where
-      `'name LIKE ? OR effect LIKE ? OR side_effects LIKE ?'
-        "%#{params[:search]}%"
-          "%#{params[:search]}%"
-            "%#{params[:search]}%"`
-                else
-                  Product.all
-                end
+      if params[:search].present?
+        @products = Product.where(
+          [
+            "name LIKE ? OR effect LIKE ? OR side_effects LIKE ?",
+            "%#{params[:search]}%",
+            "%#{params[:search]}%",
+            "%#{params[:search]}%"
+          ]
+        )
+      else
+        @products = Product.all
+      end
 
     if params[:category].present?
       @products = @products.where(category: params[:category])
