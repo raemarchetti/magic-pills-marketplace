@@ -20,6 +20,16 @@
 <br>
 <% end %>
 
+<h1>Available Magic Pills</h1>
+<% @products.each do |product| %>
+  <div>
+    <h2><%= product.name %></h2>
+    <p><strong>Price:</strong> <%= product.price %></p>
+    <!-- Add additional information as needed -->
+    <%= link_to "View Details", product_path(product) %>
+  </div>
+<% end %>
+
 <div class="apple_pagination">
   <div class="page_info">
     <%= page_entries_info @products %>
