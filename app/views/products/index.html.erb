@@ -28,13 +28,27 @@
 
 <h1>Available Magic Pills</h1>
 <% @products.each do |product| %>
-  <div>
-    <h2><%= product.name %></h2>
-    <p><strong>Price:</strong> <%= product.price %></p>
-    <!-- Add additional information as needed -->
-    <%= link_to "View Details", product_path(product) %>
+  <div class="card-trip">
+  <img src="https://cdn.pixabay.com/photo/2016/03/14/01/30/pill-1254786_1280.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= product.name %></h2>
+      <p><%= product.effect %></p>
+      <p><%= link_to "View Details", product_path(product) %></p>
+    </div>
+    <h2 class="card-trip-pricing">$<%= product.price %></h2>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" class="card-trip-user avatar-bordered" />
+    </div>
   </div>
+
+</div>
+
 <% end %>
+
+
+
+
 
 <div class="apple_pagination">
   <div class="page_info">
