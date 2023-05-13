@@ -1,4 +1,10 @@
-<h1>Products</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Products</h1>
+    </div>
+  </div>
+
 <%= form_tag search_products_path, method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: 'Search pills...' %>
   <%= submit_tag 'Search' %>
@@ -21,14 +27,23 @@
 <% end %>
 
 <h1>Available Magic Pills</h1>
-<% @products.each do |product| %>
-  <div>
-    <h2><%= product.name %></h2>
-    <p><strong>Price:</strong> <%= product.price %></p>
-    <!-- Add additional information as needed -->
-    <%= link_to "View Details", product_path(product) %>
-  </div>
-<% end %>
+<div class="cards">
+  <% @products.each do |product| %>
+    <div class="card-trip">
+    <img src="https://images.unsplash.com/photo-1517157837591-17b69085bfdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= product.name %></h2>
+        <p><%= product.effect %></p>
+        <p><%= link_to "View Details", product_path(product) %></p>
+      </div>
+      <h2 class="card-trip-pricing">$<%= product.price %></h2>
+
+      <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <div class="apple_pagination">
   <div class="page_info">
