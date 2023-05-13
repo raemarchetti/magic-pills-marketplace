@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     end
   end
   # Defines the root path route ("/")
-  Rails.application.routes.draw do
     resources :orders, only: [:index]
-  end
   # root "articles#index"
 end
