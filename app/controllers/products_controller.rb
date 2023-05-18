@@ -1,9 +1,34 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show, :search, :destroy]
 
   def index
     @products = Product.all
     @products = Product.paginate(page: params[:page], per_page: 10)
+  end
+
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.create(product_params)
+    redirect_to products_path
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to products_path
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to products_path
   end
 
   def show
@@ -35,4 +60,11 @@ class ProductsController < ApplicationController
       @products = @products.order(price: :desc)
     end
   end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price)
+  end
+  
 end
