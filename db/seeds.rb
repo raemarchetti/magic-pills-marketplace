@@ -8,16 +8,22 @@ user = User.create!(
   password: 'password'
 )
 
-categories = ['Invisibility', 'Mind-Reading', 'Superhuman Strength', 'Tele-Transportation']
+categories = []
+
+5.times do
+  power = Faker::Superhero.power
+  categories << { name: power, power: power }
+end
+
 categories.each do |category|
   5.times do
     product = Product.new(
-      name: Faker::Lorem.word,
-      effect: Faker::Lorem.sentence,
-      side_effects: Faker::Lorem.sentence,
+      name: "#{Faker::Superhero.name} Pill",
+      effect: category[:power],
+      side_effects: "#{Faker::Adjective.negative.capitalize} #{Faker::Superhero.descriptor}",
       lifespan_days: Faker::Number.between(from: 30, to: 365),
       price: Faker::Number.decimal(l_digits: 2),
-      category: category
+      category: category[:name]
     )
     product.user = user
     product.save!
