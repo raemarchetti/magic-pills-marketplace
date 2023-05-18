@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/order/remove_from_order_product/:product_id", to: "orders#remove_from_order_product", as: "remove_from_order"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :products, only: [:index, :show] do
+  resources :products, only: [:index, :show, :new, :create] do
     collection do
       get 'search'
     end
