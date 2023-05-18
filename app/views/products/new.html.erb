@@ -2,7 +2,7 @@
   <h1 class="text-center">Register a new pill</h1>
 
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <%= simple_form_for @product, url: products_path, method: :post do |form| %>
+    <%= simple_form_for @product do |form| %>
       <%= form.error_notification %>
 
       <div class="form-inputs w-100">
@@ -14,8 +14,9 @@
         <%= form.input :price %>
       </div>
 
+
       <div class="form-actions w-100 d-flex justify-content-center mb-2">
-        <%= form.button :submit, class: 'btn btn-primary' %>
+        <%= form.submit 'Create product', class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>

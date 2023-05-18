@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
     @products = Product.all
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product, notice: 'Your magic pill was successfully created.'
     else
-      render :new, notice: 'Failed to create'
+      render :new, status: :unprocessable_entity, notice: 'Failed to create'
     end
   end
 
