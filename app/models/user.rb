@@ -5,9 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :order, dependent: :destroy
-  after_create :create_order
+  after_commit :create_order, on: :create
+
+  has_many :orders
 
   def create_order
-    @order = Order.new
+   Order.create(status: "open", user: self)
   end
 end

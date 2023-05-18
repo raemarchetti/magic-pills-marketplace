@@ -1,23 +1,43 @@
 class OrdersController < ApplicationController
-  before_action :set_order_items, only: [:show]
+  before_action :authenticate_user!
 
   def index
-    @orders = Order.select(:id, :created_at, :product_id, :user_id).all
+    @orders = Order.where(user: current_user)
+    @orders = current_user.orders
   end
 
   def show
-  
+    @order = Order.find(params[:id])
   end
 
   def create
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to @order, notice: 'Order created successfully.'
+    else
+      render :new
+    end
+  end
 
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to orders_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path, notice: 'Order deleted successfully.'
   end
 
   private
 
-  def set_order_items
-    @order = current_user.order
-    @set_order_items ||= @order&.order_items
+  def order_params
+    params.require(:order).permit(:status)
   end
 
 end
