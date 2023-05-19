@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
 
     if params[:search].present?
       search_query = "%#{params[:search]}%"
-      @products = @products.where("name LIKE :query OR effect LIKE :query OR side_effects LIKE :query", query: search_query)
+      @products = @products.where("name LIKE :query", query: search_query)
     end
 
     if params[:category].present?
