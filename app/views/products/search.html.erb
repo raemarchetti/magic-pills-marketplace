@@ -1,5 +1,10 @@
 <h1>Search Results</h1>
 
+<%= form_tag search_products_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Search pills...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
 <% if @products.present? %>
   <ul>
     <% @products.each do |product| %>
@@ -16,3 +21,8 @@
   <p>No results found.</p>
 <% end %>
 
+<% if  url_for(:back).split('/')[-1] == 'edit'%>
+  <%= link_to "Back", products_path, class:'btn btn-primary my-3' %>
+<% else %>
+ <%= link_to "Back", url_for(:back), class:'btn btn-primary my-3' %>
+<% end %>
