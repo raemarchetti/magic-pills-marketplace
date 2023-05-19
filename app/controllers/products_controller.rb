@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
 
-
     @products = Product.all
     @products = Product.paginate(page: params[:page], per_page: 10)
   end
@@ -55,18 +54,12 @@ class ProductsController < ApplicationController
   end
 
   def search
-      if params[:search].present?
-        @products = Product.where(
-          [
-            "name LIKE ? OR effect LIKE ? OR side_effects LIKE ?",
-            "%#{params[:search]}%",
-            "%#{params[:search]}%",
-            "%#{params[:search]}%"
-          ]
-        )
-      else
-        @products = Product.all
-      end
+    @products = Product.all
+
+    if params[:search].present?
+      search_query = "%#{params[:search]}%"
+      @products = @products.where("name LIKE :query OR effect LIKE :query OR side_effects LIKE :query", query: search_query)
+    end
 
     if params[:category].present?
       @products = @products.where(category: params[:category])
@@ -78,6 +71,7 @@ class ProductsController < ApplicationController
       @products = @products.order(price: :desc)
     end
   end
+
 
   private
 
