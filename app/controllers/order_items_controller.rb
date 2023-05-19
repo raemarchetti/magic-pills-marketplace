@@ -1,24 +1,26 @@
 class OrderItemsController < ApplicationController
-  def add_to_order
+  def create
     @product = Product.find(params[:product_id])
-    current_user.order.create(product: @product, quantity: 1)
-    redirect_to order_path, notice: "Product added to cart successfully."
+    @order_item = OrderItem.new(product: @product, quantity: 1)
+    if @order_item.save
+      redirect_to order_path, notice: "Product added to cart successfully."
+    else
+      render :new
+    end
   end
 
-  def update_order
-    @order = current_user.order.find_by(product_id: params[:product_id])
-    if @order
-      @order.update(quantity: params[:quantity])
+  def update
+    @order_item = OrderItem.find(params[:product_id])
+    if @order_item.update(quantity: params[:quantity])
       redirect_to order_path, notice: "Cart updated successfully."
     else
       redirect_to order_path, alert: "Product not found in cart."
     end
   end
 
-  def remove_from_order
-    @order = current_user.order.find_by(product_id: params[:product_id])
-    if @order
-      @order.destroy
+  def destroy
+    @order_item = OrderItem.find(params[:product_id])
+    if @order_item.destroy
       redirect_to order_path, notice: "Product removed from cart successfully."
     else
       redirect_to order_path, alert: "Product not found in cart."
