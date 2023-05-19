@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag asset_path('pill.png') %>
     <title>MagicPillsMarketplace</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
@@ -16,6 +17,7 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
+     <div class="<%='container' unless controller.controller_name == "pages" %>">
     <%= yield %>
     <%= render "shared/footer" %>
   </body>

@@ -2,6 +2,18 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search, :destroy]
 
   def index
+    if params[:category]
+      @category = params[:category]
+      @products = Product.where(category: params[:category])
+    elsif params[:query]
+      @products = Product.search(params[:query])
+    elsif params[:user_id]
+      @products = Product.where(user_id: params[:user_id])
+    else
+      @products = Product.all
+    end
+
+
     @products = Product.all
     @products = Product.paginate(page: params[:page], per_page: 10)
   end

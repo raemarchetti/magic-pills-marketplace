@@ -10,3 +10,9 @@
     </div>
   </div>
 </div>
+
+<% if  url_for(:back).split('/')[-1] == 'show'%>
+  <%= link_to "Back", products_path, class:'btn btn-primary my-3' %>
+<% else %>
+ <%= link_to "Back", url_for(:back), class:'btn btn-primary my-3' %>
+<% end %>
