@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resource :order, only: [:show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :products, only: [:index, :show, :new] do
+
+  resources :products, only: [:index, :show, :new, :create] do
     collection do
       get 'search'
     end

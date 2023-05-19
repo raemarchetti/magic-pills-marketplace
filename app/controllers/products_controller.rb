@@ -13,9 +13,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to products_path
+      redirect_to products_path, notice: 'Your magic pill was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity, notice: 'Failed to create'
     end
   end
 
@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    # @order_item = Order_item.new
   end
 
   def search
@@ -73,5 +72,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :category, :price, :effect, :lifespan_days, :side_effects)
   end
-
 end
