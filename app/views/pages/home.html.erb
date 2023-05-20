@@ -1,8 +1,26 @@
 <%# <p>Find me in app/views/pages/home.html.erb</p> %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1615715035836-43483dfaa1fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
-  <div class="container">
-    <h1>Welcome to Magic Pills <strong>where your wildest dreams come true!</strong></h1>
-    <p>Discover a world of extraordinary potions and enchantments that can enhance your life..</p>
-    <%= link_to 'Shop Now', products_path, class: "btn btn-ghost"  %>
+
+<div class="container-home">
+  <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1615715035836-43483dfaa1fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"> %>
+  <div class="row">
+    <div class="col-6" id="ident">
+      <div class="text-box">
+        <div class="formatting-text">
+          <h1>Welcome to <strong><span class="color-one">M</span><span class="color-two">a</span><span class="color-three">g</span><span class="color-four">i</span><span class="color-five">c</span> <span class="color-one">P</span><span class="color-two">i</span><span class="color-three">l</span><span class="color-four">l</span><span class="color-five">s</span></strong></h1>
+        </div>
+        <div class="formatting-text">
+          <h4><strong>where your wildest dreams come true!</strong></h4>
+        </div>
+        <div class="formatting-text">
+          <h6>Unleash Your Superhero Potential and Discover Your Hidden Superpowers</h6>
+        </div>
+        <div>
+          <%= link_to 'Buy now!', products_path, class: "btn" %>
+        </div>
+      </div>
+    </div>
+      <div class="col-6">
+        <%= image_tag "superhero.png", class: "img-home" %>
+      </div>
   </div>
 </div>
