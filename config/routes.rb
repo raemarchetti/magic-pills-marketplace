@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resource :order, only: [:show, :destroy, :create]
 
+  resources :order_items, only: [:create, :update, :destroy, :index]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :products do
