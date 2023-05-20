@@ -2,6 +2,7 @@ class OrderItemsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @order_item = OrderItem.new(product: @product, quantity: 1)
+    # @orders = current_user.orders
     if @order_item.save
       redirect_to order_path, notice: "Product added to cart successfully."
     else
