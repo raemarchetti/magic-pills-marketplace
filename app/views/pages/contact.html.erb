@@ -55,14 +55,17 @@
     </div>
     <div class="col-6">
       <div>
-        <form class="p-3 p-xl-4" method="post">
+        <form class="p-3 p-xl-4" method="get">
           <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name"></div>
           <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email">
           </div>
           <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6"
               placeholder="Message"></textarea></div>
-          <div><button class="btn bt-contact d-block w-100" type="submit">Send </button></div>
+          <div><input class="btn bt-contact d-block w-100" type="submit" value="Send"></div>
         </form>
+        <% if params["name"].present? %>
+          <h3 class="send">Mensagem enviada!</h3>
+        <% end %>
       </div>
     </div>
     <div class="col-3">
