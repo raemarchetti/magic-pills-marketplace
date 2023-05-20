@@ -6,13 +6,14 @@ class OrderItemsController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @order_item = current_order.order_items.build(product: @product, quantity: 1)
-    @order_item = OrderItem.new(product: @product, quantity: 1)
+    @order = current_user.orders.last
+
+    @order_item = OrderItem.new(product: @product, quantity: 1, order: @order)
 
     if @order_item.save
-      redirect_to order_path, notice: "Product added to cart successfully."
+      redirect_to order_path(@order), notice: "Product added to cart successfully."
     else
-      render :new
+      render :products_path, status: :unprocessable_entity
     end
   end
 
