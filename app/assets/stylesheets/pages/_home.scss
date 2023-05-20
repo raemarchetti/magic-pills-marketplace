@@ -1,1 +1,89 @@
 // Specific CSS for your home-page
+.container-home{
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(45deg,#621279,#cb6ce6,#f266ab,#fdcb58);
+  background-size: 300% 300%;
+  animation: bganimated 12s infinite ease-in-out;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@keyframes bganimated{
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+
+.img-home{
+  max-width: 100%;
+  max-height: 90vh;
+}
+
+.text-box{
+  font-family: 'poppins';
+  background-color: #282828;
+  color: white;
+  max-width: 450px;
+  max-height: 450px;
+  box-shadow: 16px 14px 20px #0000008c;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  padding: 9px;
+}
+
+#ident{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formatting-text{
+  padding: 20px;
+}
+
+.btn{
+  background-color: #621279;
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 15px;
+  margin: 0 0 10px 10px;
+}
+
+.btn:hover {
+  color: white;
+  background-color:#cb6ce6;
+  border-color: white;
+  border-radius: 10px;
+  padding: 17px;
+}
+
+.color-one{
+  color: #8a33a1;
+}
+
+.color-two{
+  color:#cb6ce6;
+}
+
+.color-three{
+  color:#f266ab;
+}
+
+.color-four{
+  color:#fdcb58;
+}
+
+.color-five{
+  color: orange;
+}

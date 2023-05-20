@@ -1,8 +1,18 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
-    @products = Product.all
+    if params[:category]
+      @category = params[:category]
+      @products = Product.where(category: params[:category])
+    elsif params[:query]
+      @products = Product.search(params[:query])
+    elsif params[:user_id]
+      @products = Product.where(user_id: params[:user_id])
+    else
+      @products = Product.all
+    end
+
     @products = Product.paginate(page: params[:page], per_page: 10)
   end
 
@@ -12,6 +22,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       redirect_to products_path, notice: 'Your magic pill was successfully created.'
     else
@@ -43,18 +54,12 @@ class ProductsController < ApplicationController
   end
 
   def search
-      if params[:search].present?
-        @products = Product.where(
-          [
-            "name LIKE ? OR effect LIKE ? OR side_effects LIKE ?",
-            "%#{params[:search]}%",
-            "%#{params[:search]}%",
-            "%#{params[:search]}%"
-          ]
-        )
-      else
-        @products = Product.all
-      end
+    @products = Product.all
+
+    if params[:search].present?
+      search_query = "%#{params[:search]}%"
+      @products = @products.where("name LIKE :query", query: search_query)
+    end
 
     if params[:category].present?
       @products = @products.where(category: params[:category])
@@ -70,6 +75,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :category, :price, :effect, :lifespan_days, :side_effects)
+    params.require(:product).permit(:name, :category, :price, :effect, :lifespan_days, :side_effects, :image)
   end
 end

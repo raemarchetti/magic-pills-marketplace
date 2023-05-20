@@ -2,18 +2,18 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resource :order, only: [:show]
+  resource :order, only: [:show, :destroy, :create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :products, only: [:index, :show, :new, :create] do
+  resources :products do
     collection do
       get 'search'
     end
     member do
-      post 'add_to_order'
+      post 'add_to_order_item'
       patch 'update_order_item'
-      delete 'remove_from_order'
+      delete 'remove_from_order_item'
     end
   end
   # Defines the root path route ("/")

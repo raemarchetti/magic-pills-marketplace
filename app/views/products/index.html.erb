@@ -37,18 +37,21 @@
 <h1>Available Magic Pills</h1>
 <div class="cards">
   <% @products.each do |product| %>
-    <div class="card-trip">
-    <img src="https://images.unsplash.com/photo-1517157837591-17b69085bfdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
+    <div class="card-trip mb-5">
+      <img src=<%= product.image %>/>
     <div class="card-trip-infos">
       <div>
         <h2><%= product.name %></h2>
-        <p><%= product.effect %></p>
-        <p><%= link_to "View Details", product_path(product) %></p>
+        <p class='mb-3'><%= product.effect %></p>
+        <p><%= link_to "View Details", product_path(product.id), class:'btn btn-primary
+' %></p>
         <br>
         <p>
+          
     <%# <%= link_to "Edit", product_path(product) %>
     <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
     <%# <%= button_to "Add #{product.name} to cart", add_to_order_product_path(:product_id => product.id) %>
+
   </p>
       </div>
       <h2 class="card-trip-pricing">$<%= product.price %></h2>

@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    if params[:id].present?
     @order = Order.find(params[:id])
+    end
   end
 
   def create
@@ -34,10 +36,9 @@ class OrdersController < ApplicationController
     redirect_to orders_path, notice: 'Order deleted successfully.'
   end
 
-  private
+ private
 
   def order_params
     params.require(:order).permit(:status)
   end
-
 end
