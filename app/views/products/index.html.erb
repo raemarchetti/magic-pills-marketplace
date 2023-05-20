@@ -50,7 +50,9 @@
 
     <%# <%= link_to "Edit", product_path(product) %>
     <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%= button_to "Add to cart", order_items_path(product_id: product.id), method: :post%>
+   <%= simple_form_for [product, Order.new] do |f|%>
+     <%= f.submit "Buy" %>
+   <% end %>
 
   </p>
       </div>

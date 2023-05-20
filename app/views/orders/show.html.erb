@@ -1,1 +1,3 @@
-<%= render "cart", order_items: @order_items %>
+<p>Product: <%= @order.product.name %></p>
+<p>Buyer: <%= @order.user.email %></p>
+<p>Seller: <%= @order.product.user.email %></p>
