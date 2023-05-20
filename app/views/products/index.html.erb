@@ -11,7 +11,7 @@
         <div class="input-group">
           <%= text_field_tag :search, params[:search], placeholder: 'Search pills...', class: 'form-control' %>
           <div class="input-group-append">
-            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            <%= submit_tag 'Search', class: "btn btn-flat" %>
           </div>
         </div>
       </div>
@@ -43,15 +43,15 @@
       <div>
         <h2><%= product.name %></h2>
         <p class='mb-3'><%= product.effect %></p>
-        <p><%= link_to "View Details", product_path(product), class:'btn btn-primary
-' %></p>
+        <p><%= link_to "View Details", product_path(product), class:"btn btn-flat"%>
+</p>
         <br>
         <p>
 
     <%# <%= link_to "Edit", product_path(product) %>
     <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
    <%= simple_form_for [product, Order.new] do |f|%>
-     <%= f.submit "Buy" %>
+     <%= f.submit "Buy", class: "btn btn-flat"%>
    <% end %>
 
   </p>

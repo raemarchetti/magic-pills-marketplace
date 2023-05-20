@@ -1,3 +1,9 @@
-<p>Product: <%= @order.product.name %></p>
-<p>Buyer: <%= @order.user.email %></p>
-<p>Seller: <%= @order.product.user.email %></p>
+<div class="card-product">
+  <%= image_tag "rocket.png", class: "." %>
+
+  <div class="order-details card-product-infos">
+    <h2 class="product"><strong>Product: </strong><%= @order.product.name %></h2>
+    <p class="buyer">Buyer: <%= @order.user.email %></p>
+    <p class="seller">Seller: <%= @order.product.user.email %></p>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.card-product {
+  margin: 20px;
+}
+
+.h2 {
+  font-size: 30px;
+}
+
+.p {
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.order-details {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product, .buyer, .seller {
+  margin: 10px 0;
+}
+
+.product {
+  color: #333;
+  font-weight: bold;
+}
+
+.buyer, .seller {
+  color: #670BFF;
+}
+
+.seller {
+  font-style: italic;
+}
