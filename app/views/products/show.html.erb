@@ -1,14 +1,10 @@
-<h1><%= @product.name %></h1>
-<p><strong>Effects:</strong> <%= @product.effect %></p>
-<p><strong>Lifespan:</strong> <%= @product.lifespan_days %></p>
-<p><strong>Side Effects:</strong> <%= @product.side_effects %></p>
-<p><strong>Price:</strong> <%= @product.price %></p>
+<div class="container">
+  <h1><%= @product.name %></h1>
+  <p><strong>Effects:</strong> <%= @product.effect %></p>
+  <p><strong>Lifespan:</strong> <%= @product.lifespan_days %></p>
+  <p><strong>Side Effects:</strong> <%= @product.side_effects %></p>
+  <p><strong>Price:</strong> <%= @product.price %></p>
+</div>
 
-<%= link_to "Edit", edit_product_path(@product),  class: "btn btn-primary my-3"%>
-<%= button_to "Delete", product_path(@product), method: :delete, class: "btn btn-primary" %>
-<%# <%= button_to "Add to Cart", order_items_path(@product), method: :post %>
-<% if  url_for(:back).split('/')[-1] == 'edit'%>
-  <%= link_to "Back", products_path, class:'btn btn-primary my-3' %>
-<% else %>
- <%= link_to "Back", url_for(:back), class:'btn btn-primary my-3' %>
-<% end %>
+<%# <%= link_to "Add to Cart", add_to_cart_path(@product), method: :post %>
+<%= link_to "Back", products_path, class:'btn btn-primary my-3' %>
