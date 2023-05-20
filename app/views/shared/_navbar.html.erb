@@ -3,7 +3,7 @@
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "https://cdn-icons-png.flaticon.com/512/5245/5245612.png" %>
     <% end %>
-    <h3>Magic Pills Market Place</h3>
+    <h3>Magic Pills Marketplace</h3>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,7 +35,7 @@
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Magic Studio", new_product_path, class: "dropdown-item" %>
-              <%= link_to "Check-out", orders_path, class: "dropdown-item" %>
+              <%= link_to "Checkout", orders_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
@@ -50,7 +50,6 @@
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
-
 
         <% end %>
       </ul>
