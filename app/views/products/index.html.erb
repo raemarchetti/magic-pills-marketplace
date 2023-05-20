@@ -43,14 +43,14 @@
       <div>
         <h2><%= product.name %></h2>
         <p class='mb-3'><%= product.effect %></p>
-        <p><%= link_to "View Details", product_path(product.id), class:'btn btn-primary
+        <p><%= link_to "View Details", product_path(product), class:'btn btn-primary
 ' %></p>
         <br>
         <p>
-          
+
     <%# <%= link_to "Edit", product_path(product) %>
     <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%# <%= button_to "Add #{product.name} to cart", add_to_order_product_path(:product_id => product.id) %>
+    <%= button_to "Add to cart", order_items_path(product_id: product.id), method: :post%>
 
   </p>
       </div>

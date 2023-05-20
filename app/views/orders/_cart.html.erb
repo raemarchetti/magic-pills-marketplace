@@ -1,25 +1,25 @@
 <h1>My cart</h1>
-<% if @order_items.present? %>
+<% if @order.present? %>
   <table>
     <thead>
       <tr>
         <th>Product</th>
+        <th>Quantity</th>
         <th>Price</th>
         <th>Actions</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @order_items.each do |order_item| %>
+      <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.product.name %></td>
           <td><%= order_item.quantity %></td>
           <td><%= order_item.product.price %></td>
           <td>
-            <%= link_to "Remove", remove_from_order_product_path(order_item.product), method: :delete %>
-            <%= form_tag update_order_item_product_path, method: :put do %>
+            <%= link_to "Remove", remove_from_order_item_path(order_item), method: :delete %>
+            <%= form_tag update_order_item_path(order_item), method: :patch do %>
               <%= number_field_tag :quantity, order_item.quantity, min: 1 %>
-              <%= hidden_field_tag :product_id, order_item.product.id %>
               <%= submit_tag "Update" %>
             <% end %>
           </td>

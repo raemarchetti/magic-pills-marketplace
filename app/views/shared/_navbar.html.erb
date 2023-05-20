@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "/", class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
@@ -45,7 +45,7 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to "Contact", "#", class: "nav-link" %>
+            <%= link_to "Contact", contact_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -56,4 +56,3 @@
     </div>
   </div>
 </div>
-<hr>

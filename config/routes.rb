@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "contact", to: "pages#contact"
 
   resource :order, only: [:show, :destroy, :create]
+
+  resources :order_items, only: [:create, :update, :destroy, :index]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

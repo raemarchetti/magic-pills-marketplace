@@ -1,12 +1,19 @@
 class OrderItemsController < ApplicationController
+  # add show method - check this out
+  def show
+    @order_items = current_user.order.order_items
+  end
+
   def create
     @product = Product.find(params[:product_id])
-    @order_item = OrderItem.new(product: @product, quantity: 1)
-    # @orders = current_user.orders
+    @order = current_user.orders.last
+
+    @order_item = OrderItem.new(product: @product, quantity: 1, order: @order)
+
     if @order_item.save
-      redirect_to order_path, notice: "Product added to cart successfully."
+      redirect_to order_path(@order), notice: "Product added to cart successfully."
     else
-      render :new
+      render :products_path, status: :unprocessable_entity
     end
   end
 

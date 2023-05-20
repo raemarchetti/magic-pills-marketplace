@@ -1,0 +1,50 @@
+.bs-icon.bs-icon-primary {
+  color: var(--bs-white);
+  background: var(--bs-primary);
+}
+
+.bs-icon.bs-icon-rounded {
+  border-radius: .5rem;
+}
+
+.bs-icon {
+  --bs-icon-size: 1.5rem;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--bs-icon-size);
+  width: calc(var(--bs-icon-size) * 2);
+  height: calc(var(--bs-icon-size) * 2);
+  color: var(--bs-#621279);
+  background-color: #621279;
+}
+
+.container-contact{
+  background-color: #a459d1;
+}
+
+.img-contact{
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+.bt-contact{
+  background-color: #621279;
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 15px;
+  margin: 0 0 10px 10px;
+}
+
+.bt-contact:hover {
+  color: white;
+  background-color:#cb6ce6;
+  border-color: white;
+  border-radius: 10px;
+  padding: 17px;
+}
+
+.send{
+  color: #621279;
+}
