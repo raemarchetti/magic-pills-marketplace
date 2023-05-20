@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
     if params[:category]
@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
 
-    @products = Product.all
     @products = Product.paginate(page: params[:page], per_page: 10)
   end
 
@@ -23,6 +22,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       redirect_to products_path, notice: 'Your magic pill was successfully created.'
     else
