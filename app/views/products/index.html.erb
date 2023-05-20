@@ -1,30 +1,38 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>All our Products</h1>
+      <h1>All Products</h1>
     </div>
   </div>
 
-<%= form_tag search_products_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: 'Search pills...' %>
-  <%= submit_tag 'Search' %>
+  <%= form_tag search_products_path, method: :get, class: 'mb-3', id: 'search-form' do %>
+    <div class="row">
+      <div class="col-8">
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: 'Search pills...', class: 'form-control' %>
+          <div class="input-group-append">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <%= select_tag :category, options_for_select(Product.pluck(:category).uniq), { include_blank: 'Category', class: 'form-control', onchange: 'submitForm();' } %>
+      </div>
+    </div>
 
-<br>
+    <div class="form-group py-3">
+      <div class="form-check">
+        <%= radio_button_tag :sort, 'asc', id: 'sort-asc', class: 'form-check-input', onchange: 'submitForm();' %>
+        <label class="form-check-label" for="sort-asc">Ascending Price</label>
+      </div>
+      <div class="form-check">
+        <%= radio_button_tag :sort, 'desc', id: 'sort-desc', class: 'form-check-input', onchange: 'submitForm();' %>
+        <label class="form-check-label" for="sort-desc">Descending Price</label>
+      </div>
+    </div>
 
-<label for="category">Category:</label>
-<%= select_tag :category, options_for_select(Product.pluck(:category).uniq), include_blank: true %>
-<br>
-
-<label>
-  <%= radio_button_tag :sort, 'asc' %>
-  Ascending Price
-</label>
-<label>
-  <%= radio_button_tag :sort, 'desc' %>
-  Descending Price
-</label>
-<br>
-<% end %>
+    <%= submit_tag 'Search', class: 'btn btn-primary', style: 'display: none;' %>
+  <% end %>
 
 <h1>Available Magic Pills</h1>
 <div class="cards">
@@ -39,10 +47,10 @@
 ' %></p>
         <br>
         <p>
-    <%= link_to "Edit", product_path(product) %> |
-    <%= link_to "Delete", product_path(product), method: :delete, data: { confirm: "Are you sure?" } %> |
-    <%= link_to "Add to cart", order_path(product), method: :post %>
-    <%# <%= link_to "Add to Cart", order_items_path(product_id: product.id), method: :post %>
+
+    <%# <%= link_to "Edit", product_path(product) %>
+    <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%# <%= button_to "Add #{product.name} to cart", add_to_order_product_path(:product_id => product.id) %>
 
   </p>
       </div>
@@ -53,6 +61,24 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  function submitForm() {
+    document.getElementById('search-form').submit();
+  }
+
+  // Get the radio buttons and listen for change events
+  const sortAsc = document.getElementById('sort-asc');
+  const sortDesc = document.getElementById('sort-desc');
+
+  sortAsc.addEventListener('change', () => {
+    submitForm();
+  });
+
+  sortDesc.addEventListener('change', () => {
+    submitForm();
+  });
+</script>
 
 <div class="apple_pagination">
   <div class="page_info">
