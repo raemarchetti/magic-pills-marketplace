@@ -28,3 +28,19 @@
   max-width: 100%;
   max-height: 100vh;
 }
+
+.bt-contact{
+  background-color: #621279;
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 15px;
+  margin: 0 0 10px 10px;
+}
+
+.bt-contact:hover {
+  color: white;
+  background-color:#cb6ce6;
+  border-color: white;
+  border-radius: 10px;
+  padding: 17px;
+}
