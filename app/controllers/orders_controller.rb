@@ -7,19 +7,21 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if params[:id].present?
+
     @order = Order.find(params[:id])
-    end
+
   end
 
   def create
-    @order = Order.new(order_params)
-    if @order.save
-      redirect_to @order, notice: 'Order created successfully.'
-    else
-      render :new
-    end
+    @product = Product.find(params[:product_id])
+    @order = Order.new
+    @order.product = @product
+    @order.user = current_user
+    @order.save!
+
+    redirect_to order_path(@order)
   end
+
 
   def update
     @order = Order.find(params[:id])
