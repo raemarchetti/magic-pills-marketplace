@@ -1,6 +1,6 @@
 .bs-icon.bs-icon-primary {
   color: var(--bs-white);
-  background: var(--bs-primary);
+  background: #621279;
 }
 
 .bs-icon.bs-icon-rounded {
@@ -16,12 +16,16 @@
   font-size: var(--bs-icon-size);
   width: calc(var(--bs-icon-size) * 2);
   height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-#621279);
+  color: whitesmoke;
   background-color: #621279;
 }
 
 .container-contact{
   background-color: #a459d1;
+}
+
+.pad{
+  padding-left: 30px;
 }
 
 .img-contact{
@@ -34,7 +38,7 @@
   color: whitesmoke;
   font-weight: bold;
   padding: 15px;
-  margin: 0 0 10px 10px;
+  // margin: 0 0 10px 10px;
 }
 
 .bt-contact:hover {
