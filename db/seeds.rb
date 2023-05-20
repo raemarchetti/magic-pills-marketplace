@@ -45,7 +45,7 @@ end
 puts 'creating PRODUCTS'
 
 categories.each do |category|
-  3.times do
+  2.times do
     product = Product.new(
       name: "#{Faker::Superhero.name} Pill",
       effect: category[:power],
